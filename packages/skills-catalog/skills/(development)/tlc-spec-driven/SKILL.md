@@ -26,6 +26,8 @@ Plan and implement features with precision. Granular tasks. Clear dependencies. 
 
 **Running this skill's scripts.** Every `scripts/*.py` shipped with this skill lives under that same skill directory. Resolve the skill directory first, then invoke `python3 <skill-dir>/scripts/<name>.py ...`. Never run `python3 scripts/...` from the consuming project root - that looks for a project-local `scripts/` tree that is not this skill. Project data under `.specs/` is still read/written relative to the project root (pass `--root` when the cwd is elsewhere). Below, `<skill-dir>` means the directory that contains this `SKILL.md`.
 
+**Repository instructions.** Before Specify, Design, Tasks, or Execute, locate and comply with all applicable repository instruction files, such as `AGENTS.md`. Treat these instructions as project-level constraints. Do not copy stable repository principles into feature artifacts unless they materially affect the feature’s requirements, design, tasks, or verification.
+
 **Execution contract - every task, non-negotiable (holds even if you do not open the reference files):**
 
 1. Tests derive from the spec's acceptance criteria and assert spec-defined outcomes - they never mirror the implementation.
@@ -159,7 +161,7 @@ When researching, designing, or making any technical decision, follow this chain
 
 ```
 Step 1: Codebase → check existing code, conventions, and patterns already in use
-Step 2: Project docs → README, docs/, inline comments, `.specs/STATE.md` (Decisions)
+Step 2: Project docs → applicable AGENTS.md files, README, docs/, inline comments, `.specs/STATE.md` (Decisions)
 Step 3: Context7 MCP → resolve library ID, then query for current API/patterns
 Step 4: Web search → official docs, reputable sources, community patterns
 Step 5: Flag as uncertain → "I'm not certain about X - here's my reasoning, but verify"
