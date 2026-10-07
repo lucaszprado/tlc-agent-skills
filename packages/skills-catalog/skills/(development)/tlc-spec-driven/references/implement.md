@@ -219,7 +219,7 @@ After the gate check passes:
 After the gate is green, close the task record **before** creating the commit, then commit code and status together. Never leave `tasks.md` still open after a successful task commit - a crash between those steps is how resume redoes finished work.
 
 1. Mark the task complete in `tasks.md`. Update requirement traceability in `spec.md` if requirement IDs are used.
-2. Create **one** atomic commit that includes the implementation, its tests, and those status/traceability updates.
+2. Create **one** atomic commit that includes the implementation, its tests, and those status/traceability updates, using the required spec trailer described below.
 
 Each task gets its own commit immediately after verification. Never batch multiple tasks into one commit.
 
@@ -289,6 +289,20 @@ for reuse across multiple endpoints.
 - Include only files listed in the task - plus the `tasks.md` / `spec.md` status updates for this task
 - Never sneak in "while I'm here" changes
 - If tests are part of the task, include them in the same commit
+
+**Required spec trailer.** Create every commit with Git's `--trailer` option and identify the active spec/feature with the `Spec` token:
+
+```bash
+git commit -m "<message>" --trailer "Spec: <feature-name>"
+```
+
+Use the exact `.specs/features/[feature]/` directory name as `<feature-name>` when the feature has persisted artifacts. For an inline spec, use the stable feature name established during Specify. Do not add the trailer manually to the subject or body, and do not omit `--trailer`.
+
+For a feature stored at `.specs/features/email-login/`, the resulting message ends with:
+
+```
+Spec: email-login
+```
 
 **Deterministic check.** Validate the message before committing: `python3 <skill-dir>/scripts/check_commit.py --message "<your message>"`. A non-zero exit means fix the format first. This makes the format rule enforceable instead of memory-dependent.
 
