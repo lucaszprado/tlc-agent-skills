@@ -86,7 +86,6 @@ graph TD
     C --> D[Data Store]
     B --> E[Component B]
 ```
-````
 
 ---
 
@@ -187,6 +186,7 @@ interface AnotherModel {
 
 ---
 
+````
 ## Tips
 
 - **Load context first** - If context.md exists, decisions there are locked
